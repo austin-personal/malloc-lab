@@ -52,11 +52,11 @@ static void *heap_listp;
 static void *segregation_list[LISTLIMIT];
 
 // Functions Prototype
-static void *extend_heap(size_t words);
-static void *coalesce(void *bp);
-static void *find_fit(size_t asize);
-static void place(void *bp, size_t asize);
-static void remove_block(void *bp);
+static void *extend_heap(size_t words); // 힙구조에 추가적인 메모리 할당 요청 하는 함수
+static void *coalesce(void *bp); //free가 됬을때, 인접 가용 블럭과 합치는 함수
+static void *find_fit(size_t asize); // 맞당한 가용블럭을 찾는 함수
+static void place(void *bp, size_t asize); // 맞당한 가용 블럭에 할당하는 함수
+static void remove_block(void *bp);// 
 static void insert_block(void *bp, size_t size);
 
 // Heap init
