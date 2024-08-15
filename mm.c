@@ -295,6 +295,7 @@ static void insert_block(void *bp, size_t size){
     int list = 0;
     void *search_ptr;
     void *insert_ptr = NULL;
+    size_t org_size = size;
 
     // 블록 크기에 맞는 리스트 찾기
     while ((list < LISTLIMIT - 1) && (size > 1)){
@@ -304,7 +305,7 @@ static void insert_block(void *bp, size_t size){
 
     // 리스트 내에서 적절한 삽입 위치 찾기
     search_ptr = segregation_list[list];
-    while ((search_ptr != NULL) && (size > GET_SIZE(HDRP(search_ptr)))){
+    while ((search_ptr != NULL) && (org_size > GET_SIZE(HDRP(search_ptr)))){
         insert_ptr = search_ptr;
         search_ptr = SUCC_FREE(search_ptr);
     }
